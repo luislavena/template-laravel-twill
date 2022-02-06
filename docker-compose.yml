@@ -3,7 +3,7 @@ services:
   app:
     image: ghcr.io/luislavena/hydrofoil-php:8.0
     working_dir: /app
-    command: sleep infinity
+    command: overmind start -f Procfile.dev
 
     # Set these env variables using `export FIXUID=$(id -u) FIXGID=$(id -g)`
     user: ${FIXUID:-1000}:${FIXGID:-1000}
