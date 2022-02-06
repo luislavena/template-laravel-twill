@@ -1,4 +1,6 @@
 ---
+version: "3.9"
+
 services:
   app:
     image: ghcr.io/luislavena/hydrofoil-php:8.0
@@ -8,7 +10,32 @@ services:
     # Set these env variables using `export FIXUID=$(id -u) FIXGID=$(id -g)`
     user: ${FIXUID:-1000}:${FIXGID:-1000}
 
+    depends_on:
+      - pgsql
+
     ports:
       - "${APP_PORT:-80}:80"
     volumes:
       - .:/app:cached
+
+  pgsql:
+    image: bitnami/postgresql:13
+    environment:
+      - POSTGRESQL_DATABASE=${DB_DATABASE:-laravel}
+      - POSTGRESQL_USERNAME=${DB_USERNAME:-user}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD:-secret}
+
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
+      retries: 3
+      timeout: 5s
+      start_period: 5s
+
+    ports:
+      - "${FORWARD_DB_PORT:-5432}:5432"
+    volumes:
+      - pgsql:/bitnami/postgresql
+
+volumes:
+  pgsql:
+    driver: local
