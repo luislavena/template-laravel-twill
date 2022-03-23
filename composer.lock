@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "area17/twill",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/area17/twill.git",
-                "reference": "e5c3647427c3e10726476baa87caa884f0a96a8b"
+                "reference": "c07b7790c203edb6d50d2a00a1cf861a271786c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/area17/twill/zipball/e5c3647427c3e10726476baa87caa884f0a96a8b",
-                "reference": "e5c3647427c3e10726476baa87caa884f0a96a8b",
+                "url": "https://api.github.com/repos/area17/twill/zipball/c07b7790c203edb6d50d2a00a1cf861a271786c5",
+                "reference": "c07b7790c203edb6d50d2a00a1cf861a271786c5",
                 "shasum": ""
             },
             "require": {
@@ -59,10 +59,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "App\\": "vendor/orchestra/testbench-core/laravel/app",
-                    "A17\\Twill\\": "src/",
-                    "A17\\Twill\\Tests\\Unit\\": "tests/unit",
-                    "A17\\Twill\\Tests\\Integration\\": "tests/integration"
+                    "A17\\Twill\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -88,9 +85,9 @@
                 "chat": "https://discord.link/twill",
                 "docs": "https://twill.io/docs",
                 "issues": "https://github.com/ifox/twill/issues/",
-                "source": "https://github.com/area17/twill/tree/2.6.0"
+                "source": "https://github.com/area17/twill/tree/2.7.0"
             },
-            "time": "2021-12-21T10:03:35+00:00"
+            "time": "2022-02-25T17:45:11+00:00"
         },
         {
             "name": "asm89/stack-cors",
