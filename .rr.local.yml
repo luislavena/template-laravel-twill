@@ -1,0 +1,19 @@
+# ---
+# Enable code reloading in local mode
+#
+# Ref: https://roadrunner.dev/docs/beep-beep-reload
+reload:
+  patterns: [".php"]
+  services:
+    http:
+      recursive: true
+      ignore: ["vendor"]
+      patterns: [".php", ".env", ".lock"]
+      dirs:
+        - app
+        - bootstrap
+        - config
+        - database
+        - public
+        - resources
+        - routes
