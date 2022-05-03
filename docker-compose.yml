@@ -3,7 +3,10 @@ version: "3.9"
 
 services:
   app:
-    image: ghcr.io/luislavena/hydrofoil-php:8.0
+    # image: ghcr.io/luislavena/hydrofoil-php:8.0
+    build:
+      context: .
+      dockerfile: dev.dockerfile
     working_dir: /app
     command: overmind start -f Procfile.dev
 
