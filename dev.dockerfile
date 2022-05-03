@@ -1,7 +1,7 @@
 FROM ghcr.io/luislavena/hydrofoil-php:8.0
 
 # ---
-# Install extra development tools
+# Install extra extensions and tools
 #
 # TODO: Support arch other than x86_64
 RUN --mount=type=cache,target=/var/cache/apt \
@@ -9,6 +9,31 @@ RUN --mount=type=cache,target=/var/cache/apt \
     --mount=type=tmpfs,target=/var/log \
     set -eux; \
     cd /tmp; \
+    # ---
+    # Use `docker-php-ext-install` to ease installation of PHP
+    # extensions
+    #
+    # Ref: https://github.com/mlocati/docker-php-extension-installer
+    export \
+      PHP_EXT_INSTALLER_VERSION=1.5.11 \
+      PHP_EXT_INSTALLER_SHA256SUM=bc80e8fb6da789e937095330a3568b5dbfdbb61061133bf5bcaa1e1b58b55992 \
+    ; \
+    cd /tmp; \
+    { \
+      curl --fail -Lo install-php-extensions \
+        https://github.com/mlocati/docker-php-extension-installer/releases/download/${PHP_EXT_INSTALLER_VERSION}/install-php-extensions; \
+      echo "${PHP_EXT_INSTALLER_SHA256SUM} *install-php-extensions" | sha256sum -c - >/dev/null 2>&1; \
+      chmod +x install-php-extensions; \
+    }; \
+    # ---
+    # Install additional PHP extensions
+    #
+    # (extra to the ones included in the base)
+    ./install-php-extensions \
+      sockets \
+    ; \
+    # remove PHP extension installer
+    rm -f ./install-php-extensions; \
     # RoadRunner
     { \
         export \
