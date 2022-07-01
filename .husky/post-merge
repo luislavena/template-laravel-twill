@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+. "$(dirname "$0")/../tools/actions_notify.sh"
+
+notify_about_actions_required HEAD@"{1}" HEAD@"{0}"
+
+exit 0
