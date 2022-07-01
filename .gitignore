@@ -17,3 +17,6 @@ yarn-error.log
 /public/js
 /public/mix-manifest.json
 /public/assets/admin
+
+# PHP-CS-Fixer
+.php-cs-fixer.cache

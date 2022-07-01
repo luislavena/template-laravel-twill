@@ -1,17 +1,28 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
+        "dev": "npx husky install; npm run development",
         "development": "mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "precommit": "lint-staged"
     },
     "devDependencies": {
+        "@prettier/plugin-php": "^0.18.4",
         "axios": "^0.21",
+        "husky": "^8.0.1",
         "laravel-mix": "^6.0.6",
-        "postcss": "^8.1.14"
+        "lint-staged": "^12.4.1",
+        "postcss": "^8.1.14",
+        "prettier": "^2.6.2"
+    },
+    "lint-staged": {
+        "**/*": "sh tools/linters.sh conflict-markers",
+        "**/*.{js,jsx,ts,tsx,html,css,php,vue}": "sh tools/linters.sh prettify",
+        "**/*.blade.php": "sh tools/linters.sh blast",
+        "**/*.php": "sh tools/linters.sh phpstan"
     }
 }

@@ -1,0 +1,24 @@
+### General
+arrowParens: always
+tabWidth: 4
+useTabs: false
+requirePragma: false
+insertPragma: false
+
+### VueJS
+vueIndentScriptAndStyle: true
+
+### PHP
+phpVersion: "8.0"
+trailingCommaPHP: true
+braceStyle: psr-2
+
+### Pattern-specific
+overrides:
+    - files: "*.yml"
+      options:
+          singleQuote: false
+    - files: "*.php"
+      options:
+          singleQuote: true
+          printWidth: 120
