@@ -64,3 +64,33 @@ production restrictions and how releases are prepared, etc.
 
 Here you should write what are all of the configurations a user can enter
 when using the project, and which file each config is set if applicable.
+
+## Linters and code formatters
+We are using a series of tools to prettify and lint the code we write:
+
+- Husky: to install and run the pre-commit hooks
+- PHPStan: to do static analysis check on PHP code
+- PHP-CS-Fixer: to remove unused dependencies and do some basic formatting
+- Prettier: to fully format the code
+- Blast: if installed, we run it to test if it's compilable
+- Eslint: TODO: not done yet, we need a FEE to help doing this the right way
+- Git conflict markers: the pre-commit checker tool also checks if the developer didn't stage any Git conflicted files by looking for conflict markers on the staged files.
+ 
+These tools are executed automatically on every commit, only on staged files (except for Blast), and for it to work you need to make sure you executed. Composer and NPM are responsible for making sure husky is installed. And these commands are also available if a developer needs to run the commands manually: 
+
+Global commands:
+
+- composer lint
+- composer format
+
+Specific commands:
+
+- composer phpstan
+- composer eslint (TODO)
+- composer prettier
+- composer blast
+- composer php-cs-fixer
+
+Commands execution also generates a log file with the result at tools/logs/<tool-name>.log, you can check for PHPStan errors on this file, for example.
+
+**TODO: do we need to have the same commands on NPM?** 

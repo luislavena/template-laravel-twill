@@ -18,7 +18,10 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "spatie/laravel-ignition": "^1.0",
+        "phpstan/phpstan": "^1.8",
+        "nunomaduro/larastan": "^2.0",
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -35,7 +38,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "npx husky install"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -45,6 +49,27 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "lint": [
+            "sh tools/linters.sh lint"
+        ],
+        "format": [
+            "sh tools/linters.sh format"
+        ],
+        "prettify": [
+            "sh tools/linters.sh prettify"
+        ],
+        "prettier": [
+            "sh tools/linters.sh prettier"
+        ],
+        "php-cs-fixer": [
+            "sh tools/linters.sh php-cs-fixer"
+        ],
+        "phpstan": [
+            "sh tools/linters.sh phpstan"
+        ],
+        "blast": [
+            "sh tools/linters.sh blast"
         ]
     },
     "extra": {
