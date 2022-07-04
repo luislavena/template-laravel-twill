@@ -3,7 +3,6 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "prod": "npm run production",
         "precommit": "lint-staged"
     },
     "devDependencies": {
