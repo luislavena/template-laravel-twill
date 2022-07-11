@@ -5,14 +5,24 @@ parameters:
     paths:
         - app
 
-    level: max
+    level: 8
 
     excludePaths:
 
     checkMissingIterableValueType: false
 
     universalObjectCratesClasses:
+        - App\Models\Model
+        - A17\Twill\Capsules\Base\Model
+        - A17\TwillTransformers\Transformer
+        - Illuminate\Database\Eloquent\Model
 
     ignoreErrors:
 
     reportUnmatchedIgnoredErrors: false
+
+    checkGenericClassInNonGenericObjectType: false
+
+    scanFiles:
+        - app/Twill/Capsules/Base/helpers.php
+        - app/Twill/Capsules/FeatureFlags/Support/helpers.php

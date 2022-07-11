@@ -4,8 +4,107 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a85fabe9ee077081d62bcbf4dc1c0fb",
+    "content-hash": "c0b826c3fe0f29a6ee9b20ab217a3fb9",
     "packages": [
+        {
+            "name": "area17/localization",
+            "version": "1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:antonioribeiro/localization.git",
+                "reference": "731d05da1589367a4efd1bf3324fdb08bf7bb4aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/antonioribeiro/localization/zipball/731d05da1589367a4efd1bf3324fdb08bf7bb4aa",
+                "reference": "731d05da1589367a4efd1bf3324fdb08bf7bb4aa",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.8",
+                "nunomaduro/collision": "^6.2",
+                "nunomaduro/larastan": "^2.1",
+                "orchestra/testbench": "^7.6",
+                "phpstan/phpstan": "^1.8",
+                "phpunit/phpunit": "^9.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "A17\\Localization\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Localization": "A17\\Localization\\Localization",
+                        "CacheControl": "A17\\Localization\\CacheControl"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "A17\\Localization\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "A17\\Localization\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "phpstan": [
+                    "vendor/bin/phpstan analyse"
+                ],
+                "test": [
+                    "./vendor/bin/testbench package:test --parallel --no-coverage"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ],
+                "post-autoload-dump": [
+                    "npx husky install"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AREA 17",
+                    "email": "support@area17.com",
+                    "role": "Owner"
+                },
+                {
+                    "name": "Antonio Ribeiro",
+                    "email": "antonio@area17.com",
+                    "role": "Creator"
+                }
+            ],
+            "description": "Localization service",
+            "homepage": "https://github.com/area17/localization",
+            "keywords": [
+                "area17",
+                "i10n",
+                "i18n",
+                "laravel",
+                "localization",
+                "twill"
+            ],
+            "support": {
+                "source": "https://github.com/antonioribeiro/localization/tree/1.x",
+                "issues": "https://github.com/antonioribeiro/localization/issues"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/area17"
+                }
+            ],
+            "time": "2022-07-10T22:37:35+00:00"
+        },
         {
             "name": "area17/twill",
             "version": "2.8.8",
@@ -94,6 +193,70 @@
                 "source": "https://github.com/area17/twill/tree/2.8.8"
             },
             "time": "2022-06-27T07:07:19+00:00"
+        },
+        {
+            "name": "area17/twill-transformers",
+            "version": "v1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/area17/twill-transformers.git",
+                "reference": "a09a4801f33a3108ff49e1bdec286b7622d90ba6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/area17/twill-transformers/zipball/a09a4801f33a3108ff49e1bdec286b7622d90ba6",
+                "reference": "a09a4801f33a3108ff49e1bdec286b7622d90ba6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=8.0",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "A17\\TwillTransformers\\ServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Support/helpers.php"
+                ],
+                "psr-4": {
+                    "A17\\TwillTransformers\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Ribeiro",
+                    "email": "antonio@area17.com",
+                    "homepage": "https://area17.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Transformers for Twill apps",
+            "homepage": "https://github.com/area17/twill-transformers",
+            "keywords": [
+                "area17",
+                "twill-transformers"
+            ],
+            "support": {
+                "issues": "https://github.com/area17/twill-transformers/issues",
+                "source": "https://github.com/area17/twill-transformers/tree/v1.1.4"
+            },
+            "time": "2022-07-07T11:02:37+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -294,16 +457,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.229.1",
+            "version": "3.231.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "5cffc0b16d1f33029628586313e9cf140f18b06d"
+                "reference": "9a7c2a8c4b7f95074749e1a7b575e6b4486bdcab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5cffc0b16d1f33029628586313e9cf140f18b06d",
-                "reference": "5cffc0b16d1f33029628586313e9cf140f18b06d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9a7c2a8c4b7f95074749e1a7b575e6b4486bdcab",
+                "reference": "9a7c2a8c4b7f95074749e1a7b575e6b4486bdcab",
                 "shasum": ""
             },
             "require": {
@@ -321,6 +484,7 @@
                 "andrewsville/php-token-reflection": "^1.4",
                 "aws/aws-php-sns-message-validator": "~1.0",
                 "behat/behat": "~3.0",
+                "composer/composer": "^1.10.22",
                 "doctrine/cache": "~1.4",
                 "ext-dom": "*",
                 "ext-openssl": "*",
@@ -379,9 +543,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.229.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.231.2"
             },
-            "time": "2022-06-30T18:16:30+00:00"
+            "time": "2022-07-08T18:16:11+00:00"
         },
         {
             "name": "brick/math",
@@ -1504,16 +1668,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.255.0",
+            "version": "v0.257.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "2b895ceb08eb106f65e975221e5d2e971cf7470e"
+                "reference": "ae109202ee831a1fb70ba824181852e6179c848b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/2b895ceb08eb106f65e975221e5d2e971cf7470e",
-                "reference": "2b895ceb08eb106f65e975221e5d2e971cf7470e",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/ae109202ee831a1fb70ba824181852e6179c848b",
+                "reference": "ae109202ee831a1fb70ba824181852e6179c848b",
                 "shasum": ""
             },
             "require": {
@@ -1542,9 +1706,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.255.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.257.0"
             },
-            "time": "2022-06-27T01:30:11+00:00"
+            "time": "2022-07-08T01:28:13+00:00"
         },
         {
             "name": "google/auth",
@@ -4800,16 +4964,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.5",
+            "version": "v0.11.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf"
+                "reference": "77fc7270031fbc28f9a7bea31385da5c4855cb7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/c23686f9c48ca202710dbb967df8385a952a2daf",
-                "reference": "c23686f9c48ca202710dbb967df8385a952a2daf",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/77fc7270031fbc28f9a7bea31385da5c4855cb7a",
+                "reference": "77fc7270031fbc28f9a7bea31385da5c4855cb7a",
                 "shasum": ""
             },
             "require": {
@@ -4870,9 +5034,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.5"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.7"
             },
-            "time": "2022-05-27T18:03:49+00:00"
+            "time": "2022-07-07T13:49:11+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -8201,16 +8365,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.13.2",
+            "version": "1.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "5b668aef16090008790395c02c893b1ba13f7e08"
+                "reference": "648b0343343565c4a056bfc8392201385e8d89f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/5b668aef16090008790395c02c893b1ba13f7e08",
-                "reference": "5b668aef16090008790395c02c893b1ba13f7e08",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/648b0343343565c4a056bfc8392201385e8d89f0",
+                "reference": "648b0343343565c4a056bfc8392201385e8d89f0",
                 "shasum": ""
             },
             "require": {
@@ -8222,9 +8386,10 @@
             "require-dev": {
                 "doctrine/cache": "^1.11 || ^2.0",
                 "doctrine/coding-standard": "^6.0 || ^8.1",
-                "phpstan/phpstan": "^0.12.20",
+                "phpstan/phpstan": "^1.4.10 || ^1.8.0",
                 "phpunit/phpunit": "^7.5 || ^8.0 || ^9.1.5",
-                "symfony/cache": "^4.4 || ^5.2"
+                "symfony/cache": "^4.4 || ^5.2",
+                "vimeo/psalm": "^4.10"
             },
             "type": "library",
             "autoload": {
@@ -8267,9 +8432,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.13.2"
+                "source": "https://github.com/doctrine/annotations/tree/1.13.3"
             },
-            "time": "2021-08-05T19:00:23+00:00"
+            "time": "2022-07-02T10:48:51+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -8534,16 +8699,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.8.0",
+            "version": "v3.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3"
+                "reference": "94441633b80495464eb34eb3f7d63445221b2585"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3",
-                "reference": "cbad1115aac4b5c3c5540e7210d3c9fba2f81fa3",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/94441633b80495464eb34eb3f7d63445221b2585",
+                "reference": "94441633b80495464eb34eb3f7d63445221b2585",
                 "shasum": ""
             },
             "require": {
@@ -8611,7 +8776,7 @@
             "description": "A tool to automatically fix PHP code style",
             "support": {
                 "issues": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues",
-                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.8.0"
+                "source": "https://github.com/FriendsOfPHP/PHP-CS-Fixer/tree/v3.9.1"
             },
             "funding": [
                 {
@@ -8619,7 +8784,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-18T17:20:59+00:00"
+            "time": "2022-07-11T08:51:43+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -11436,11 +11601,13 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "area17/localization": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^8.0.2"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
