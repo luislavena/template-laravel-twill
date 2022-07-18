@@ -97,11 +97,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/antonioribeiro/localization"
+            "url": "https://github.com/area17/localization"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/antonioribeiro/http-basic-auth"
+            "url": "https://github.com/area17/http-basic-auth"
         }
     ]
 }
