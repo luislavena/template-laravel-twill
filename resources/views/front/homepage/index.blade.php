@@ -6,8 +6,8 @@
     </div>
 
     <div class="mt-8">
-        @if(filled($page['pages']))
-            @foreach($page['pages'] as $page)
+        @if(filled($data['pages']))
+            @foreach($data['pages'] as $page)
                 <a class="mt-2" href="{{ $page['link']['url'] }}">{{ $page['link']['label'] }}</a> <br>
             @endforeach
         @endif
