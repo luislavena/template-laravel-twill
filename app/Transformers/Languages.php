@@ -2,11 +2,9 @@
 
 namespace App\Transformers;
 
-use Illuminate\Support\Collection;
-
 class Languages extends Transformer
 {
-    public function transform(array|Collection|null $data = null): array
+    public function transform(): array
     {
         return locales()
             ->map(fn($locale) => $this->transformLocale($locale))

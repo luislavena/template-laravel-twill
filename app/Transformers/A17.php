@@ -2,15 +2,13 @@
 
 namespace App\Transformers;
 
-use Illuminate\Support\Collection;
-
 /**
  * @property array $translations
  * @property array $page
  */
 class A17 extends Transformer
 {
-    public function transform(array|Collection|null $data = null): array
+    public function transform(): array
     {
         $a17 = $this->page['a17'] ?? [];
 

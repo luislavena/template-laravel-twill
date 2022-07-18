@@ -3,7 +3,6 @@
 namespace App\Transformers;
 
 use App\Twill\Capsules\Base\Crops;
-use Illuminate\Support\Collection;
 use App\Twill\Capsules\Base\Behaviors\HasImage;
 use A17\TwillTransformers\Transformer as TwillTransformer;
 
@@ -22,16 +21,10 @@ abstract class Transformer extends TwillTransformer
     protected $globalMediaParams = Crops::BLOCK_EDITOR;
 
     /**
-     * @param array|Collection|null $data
      * @return array
-     * @throws \A17\TwillTransformers\Exceptions\Transformer
      */
-    public function transform(array|Collection|null $data = null): array
+    public function transform(): array
     {
-        if (filled($data)) {
-            $this->setData($data);
-        }
-
         // Do the page transformation before everything else
         $transformedData = $this->transformData();
 

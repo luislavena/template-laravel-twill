@@ -3,7 +3,6 @@
 namespace App\Transformers\Molecule;
 
 use App\Transformers\Transformer;
-use Illuminate\Support\Collection;
 
 /**
  * @property string $title
@@ -13,7 +12,7 @@ use Illuminate\Support\Collection;
  */
 class Page extends Transformer
 {
-    public function transform(array|Collection|null $data = null): array
+    public function transform(): array
     {
         return [
             'title' => $this->title,
