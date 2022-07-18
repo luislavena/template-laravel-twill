@@ -23,10 +23,10 @@ abstract class Transformer extends TwillTransformer
 
     /**
      * @param array|Collection|null $data
-     * @return array|\Illuminate\Support\Collection
+     * @return array
      * @throws \A17\TwillTransformers\Exceptions\Transformer
      */
-    public function transform(array|Collection|null $data = null): array|Collection
+    public function transform(array|Collection|null $data = null): array
     {
         if (filled($data)) {
             $this->setData($data);

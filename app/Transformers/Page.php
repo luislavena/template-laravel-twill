@@ -2,8 +2,6 @@
 
 namespace App\Transformers;
 
-use Illuminate\Support\Collection;
-
 /**
  * @property string $title
  * @property string $slug
@@ -11,7 +9,7 @@ use Illuminate\Support\Collection;
  */
 class Page extends Transformer
 {
-    public function transformData(array|null $data = null): array|Collection
+    public function transformData(array|null $data = null): array
     {
         return ['page' => $this->transformMoleculePage()];
     }

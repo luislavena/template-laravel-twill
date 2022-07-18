@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
  */
 class A17 extends Transformer
 {
-    public function transform(array|Collection|null $data = null): array|Collection
+    public function transform(array|Collection|null $data = null): array
     {
         $a17 = $this->page['a17'] ?? [];
 

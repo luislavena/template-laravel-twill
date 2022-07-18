@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
  */
 class Page extends Transformer
 {
-    public function transform(array|Collection|null $data = null): array|Collection
+    public function transform(array|Collection|null $data = null): array
     {
         return [
             'title' => $this->title,

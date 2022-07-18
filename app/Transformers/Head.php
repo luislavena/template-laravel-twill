@@ -10,7 +10,7 @@ class Head extends Transformer
 
     private Transformer $__this;
 
-    public function transform(array|Collection|null $data = null): array|Collection
+    public function transform(array|Collection|null $data = null): array
     {
         $this->transformedData = $this->getData()['transformedData'];
 
