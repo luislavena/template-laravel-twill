@@ -62,7 +62,7 @@ class Head extends Transformer
     private function transformTwitter(): array
     {
         return [
-            'handle' => '@Accor',
+            'handle' => '@area_17_',
         ];
     }
 
