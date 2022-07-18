@@ -6,18 +6,17 @@ use Illuminate\Support\Collection;
 
 class Head extends Transformer
 {
-    /**
-     * @var mixed
-     */
-    private $transformedData;
+    private array|Collection|null $transformedData = null;
 
-    private $__this;
+    private Transformer $__this;
 
-    public function transform(array|null $data = null): array|Collection
+    public function transform(array|Collection|null $data = null): array|Collection
     {
         $this->transformedData = $this->getData()['transformedData'];
 
         $this->__this = $this->getData()['__this'];
+
+        $image = $this->transformSeoImage();
 
         return [
             'seo' => [
@@ -28,11 +27,11 @@ class Head extends Transformer
 
             'urls' => $this->transformSeoUrls(),
 
-            'image' => ['url' => $this->transformSeoImage()['src'] ?? null],
+            'image' => ['url' => $image['src'] ?? null],
 
             'twitter' => $this->transformTwitter(),
 
-            'og' => $this->transformOpenGraph(),
+            'og' => $this->transformOpenGraph($image),
         ] + ($this->__this->seo_noindex ?? false ? ['robots' => 'noindex'] : []);
     }
 
@@ -45,19 +44,16 @@ class Head extends Transformer
         ];
     }
 
-    private function transformSeoImage()
+    private function transformSeoImage(): array|null
     {
         $image = $this->transformMedia();
 
         if (blank($image)) {
-            try {
-                $image =
-                    $this->transformedData['image'] ??
-                    ($this->transformedData['cover_image'] ??
-                        ($this->transformedData['page']['image'] ?? $this->transformedData['page']['cover_image']));
-            } catch (\Exception $exception) {
-                $image = [];
-            }
+            $image =
+                $this->transformedData['image'] ??
+                ($this->transformedData['cover_image'] ??
+                    ($this->transformedData['page']['image'] ??
+                        ($this->transformedData['page']['cover_image'] ?? null)));
         }
 
         return $image;
@@ -70,7 +66,7 @@ class Head extends Transformer
         ];
     }
 
-    public function transformOpenGraph()
+    public function transformOpenGraph(array|null $image): array
     {
         return [
             'title' => $this->seo_title ?? ($this->title ?? null),

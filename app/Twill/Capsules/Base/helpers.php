@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Str;
-use Illuminate\Support\Collection;
 use Illuminate\Database\Schema\Blueprint;
 
 if (!function_exists('is_running_on_frontend')) {
@@ -46,24 +45,5 @@ if (!function_exists('create_seo_fields')) {
         $table->string('seo_title')->nullable();
 
         $table->string('seo_description')->nullable();
-    }
-}
-
-if (!function_exists('strip_tags_recursively')) {
-    function strip_tags_recursively(Collection|array $subject, string $tags = ''): array
-    {
-        $subject = (new Collection($subject))->map(function ($value, $key) use ($tags) {
-            if (is_traversable($value)) {
-                return strip_tags_recursively($value, $tags);
-            }
-
-            if (!is_string($value)) {
-                return $value;
-            }
-
-            return strip_tags($value, $tags);
-        });
-
-        return $subject->toArray();
     }
 }

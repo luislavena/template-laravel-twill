@@ -2,12 +2,13 @@
 
 namespace App\Http\Front;
 
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use A17\TwillTransformers\ControllerTrait;
+use Illuminate\View\View as IlluminateView;
 use App\Transformers\HomePage as HomepageTransformer;
 use App\Twill\Capsules\Pages\Repositories\PageRepository;
+use Illuminate\Contracts\View\Factory as IlluminateViewFactory;
 
 class Homepage extends Controller
 {
@@ -17,16 +18,11 @@ class Homepage extends Controller
 
     protected string|null $repositoryClass = PageRepository::class;
 
-    public function index(): View
+    public function index(): IlluminateViewFactory|IlluminateView|string|array|null
     {
         $this->setTemplate('front.homepage.index');
 
         return $this->view(['pages' => $this->repository()->get()]);
-    }
-
-    public function setTemplate($name)
-    {
-        $this->templateName = $name;
     }
 
     public function redirectToLocalizedHomepage(): RedirectResponse

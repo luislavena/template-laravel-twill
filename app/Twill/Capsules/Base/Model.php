@@ -3,6 +3,7 @@
 namespace App\Twill\Capsules\Base;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 use A17\Twill\Models\Model as TwillModel;
 use Illuminate\Database\Eloquent\Builder;
 use A17\Twill\Models\Behaviors\HasRevisions;
@@ -36,29 +37,19 @@ abstract class Model extends TwillModel
         locale();
     }
 
-    public function makeTranslatedLinks($route, $builder, $useOriginalLocale = false): array
+    public function makeTranslatedLinks(string $route, callable $builder, bool $convertLocales = false): array
     {
         return collect(locales())
-            ->mapWithKeys(function ($locale) use ($builder, $route, $useOriginalLocale) {
+            ->mapWithKeys(function ($locale) use ($builder, $route, $convertLocales) {
                 $parameters = $builder($locale);
 
-                if (
-                    collect($parameters)->count() !==
-                    collect($parameters)
-                        ->filter()
-                        ->count()
-                ) {
+                if ((new Collection($parameters))->count() !== (new Collection($parameters))->filter()->count()) {
                     return [];
                 }
 
                 $parameters['locale'] = $locale;
 
-                if ($locale == 'en' && !$useOriginalLocale) {
-                    $locale = 'en-gb';
-                }
-                if ($locale == 'fr' && !$useOriginalLocale) {
-                    $locale = 'fr-fr';
-                }
+                $locale = $convertLocales ? $this->convertToGlobalLocale($locale) : $locale;
 
                 return [
                     $locale => _rf($route, $parameters),
@@ -93,8 +84,14 @@ abstract class Model extends TwillModel
         return $this->makeTranslatedLinks(
             'pages.show',
             fn($locale) => [
+                'locale' => $locale,
                 'slug' => $this->getSlug($locale),
             ],
         );
+    }
+
+    private function convertToGlobalLocale(string $locale): string
+    {
+        return ['fr' => 'fr-fr', 'en' => 'en-us'][$locale] ?? $locale;
     }
 }

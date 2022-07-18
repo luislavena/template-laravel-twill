@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 class Languages extends Transformer
 {
-    public function transform(array|null $data = null): array|Collection
+    public function transform(array|Collection|null $data = null): array|Collection
     {
         return locales()
             ->map(fn($locale) => $this->transformLocale($locale))

@@ -2,7 +2,6 @@
 
 namespace App\Transformers;
 
-use App\Support\Constants;
 use App\Twill\Capsules\Base\Crops;
 use Illuminate\Support\Collection;
 use App\Twill\Capsules\Base\Behaviors\HasImage;
@@ -22,47 +21,26 @@ abstract class Transformer extends TwillTransformer
      */
     protected $globalMediaParams = Crops::BLOCK_EDITOR;
 
-    public static array $memory = [];
-
-    private function createContainer(array $transformed): array
-    {
-        app()->singleton('__transformed_data', fn() => $transformed);
-
-        return $transformed;
-    }
-
     /**
+     * @param array|Collection|null $data
+     * @return array|\Illuminate\Support\Collection
      * @throws \A17\TwillTransformers\Exceptions\Transformer
      */
-    public function __invoke(array|null $data = null): array|Collection
-    {
-        return $this->transform($data);
-    }
-
-    /**
-     * @throws \A17\TwillTransformers\Exceptions\Transformer
-     */
-    public function transform(array|null $data = null): array|Collection
+    public function transform(array|Collection|null $data = null): array|Collection
     {
         if (filled($data)) {
             $this->setData($data);
         }
 
         // Do the page transformation before everything else
-        $page = $this->transformData();
+        $transformedData = $this->transformData();
 
         $transformedData = [
-            'locale' => [
-                'current' => locale(),
+            'data' => $transformedData,
 
-                'current_internal' => localization()->getLocale(),
-
-                'matrix' => localization()->getLocaleMatrix(),
-            ],
+            'locale' => $this->transformLocale(),
 
             'layout_name' => $this->makeTemplateName(),
-
-            'page' => $page,
 
             'fe' => ($translations = __('fe')),
 
@@ -70,7 +48,7 @@ abstract class Transformer extends TwillTransformer
 
             'languages' => $this->transformLanguages(),
 
-            'a17' => json_encode($this->transformA17(['page' => $page, 'translations' => $translations])),
+            'a17' => json_encode($this->transformA17(['page' => $transformedData, 'translations' => $translations])),
         ];
 
         $seo = [
@@ -80,20 +58,20 @@ abstract class Transformer extends TwillTransformer
             ]),
         ];
 
-        return $this->createContainer($this->sanitize(to_array(collect($transformedData)->merge($seo))));
-    }
-
-    public function transformData(array|null $data = null): array|Collection
-    {
-        return (array) $data;
+        return $this->sanitize(collect($transformedData)->merge($seo));
     }
 
     /**
-     * @param array|\Illuminate\Support\Collection $array
      * @return array
      */
-    protected function sanitize($array): array
+    private function transformLocale(): array
     {
-        return parent::sanitize(strip_tags_recursively($array, Constants::WYSIWYG_ALLOWED_TAGS));
+        return [
+            'current' => locale(),
+
+            'current_internal' => localization()->getLocale(),
+
+            'matrix' => localization()->getLocaleMatrix(),
+        ];
     }
 }
