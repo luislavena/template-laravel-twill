@@ -10,6 +10,10 @@
             @foreach($data['pages'] as $page)
                 <a class="mt-2" href="{{ $page['link']['url'] }}">{{ $page['link']['label'] }}</a> <br>
             @endforeach
+
+            @if(feature('demo'))
+                <p class="mt-8">Feature flag DEMO is enabled</p>
+            @endif
         @endif
     </div>
 @endsection
