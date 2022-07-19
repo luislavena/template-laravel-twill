@@ -39,14 +39,15 @@ the vault).
 A quick introduction of the minimal setup you need to get the application up
 and running.
 
+### Frontend
+
+Frontend commands
 ```console
-$ first-command
+# Install dependencies
+$ npm install
 
-# Describe in brief what each step does
-$ another-command
-
-# Or why this step is required
-$ up-and-running
+# Bundle dependencies in dev mode with HMR enable
+$ npm run dev
 ```
 
 Here you should say more thoroughly what actually happens when you execute
@@ -76,7 +77,7 @@ We are using a series of tools to prettify and lint the code we write:
 - Eslint: TODO: not done yet, we need a FEE to help doing this the right way
 - Git conflict markers: the pre-commit checker tool also checks if the developer didn't stage any Git conflicted files by looking for conflict markers on the staged files.
  
-These tools are executed automatically on every commit, only on staged files (except for Blast), and for it to work you need to make sure you executed. Composer and NPM are responsible for making sure husky is installed. And these commands are also available if a developer needs to run the commands manually: 
+These tools are executed automatically on every commit, only on staged files (except for Blast), and for it to work you need to make sure you executed. Composer and NPM are responsible for making sure husky is installed. And these commands are also available if a developer needs to run the commands manually:
 
 Global commands:
 
