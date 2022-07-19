@@ -1,30 +1,31 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
         "build": "vite build",
+        "dev": "vite",
         "precommit": "lint-staged"
     },
-    "engines": {
-        "node": ">=16.16",
-        "npm": "please-use-yarn",
-        "yarn": ">=1.22"
+    "lint-staged": {
+        "package.json": "sort-package-json",
+        "**/*": "sh tools/linters.sh conflict-markers",
+        "**/*.{js,jsx,ts,tsx,html,css,php,vue}": "sh tools/linters.sh prettify",
+        "**/*.blade.php": "sh tools/linters.sh blast",
+        "**/*.php": "sh tools/linters.sh phpstan"
     },
     "devDependencies": {
         "@prettier/plugin-php": "0.18.9",
+        "eslint": "8.20.0",
+        "eslint-config-prettier": "8.5.0",
+        "eslint-plugin-simple-import-sort": "7.0.0",
+        "eslint-plugin-unused-imports": "2.0.0",
         "husky": "8.0.1",
         "laravel-vite-plugin": "0.5.0",
         "lint-staged": "13.0.3",
         "postcss": "8.4.14",
         "prettier": "2.7.1",
         "sort-package-json": "1.57.0",
-        "vite": "3.0.2"
-    },
-    "lint-staged": {
-        "**/*": "sh tools/linters.sh conflict-markers",
-        "**/*.{js,jsx,ts,tsx,html,css,php,vue}": "sh tools/linters.sh prettify",
-        "**/*.blade.php": "sh tools/linters.sh blast",
-        "**/*.php": "sh tools/linters.sh phpstan"
+        "vite": "3.0.2",
+        "vite-plugin-eslint": "^1.7.0"
     },
     "engines": {
         "node": "~16",
