@@ -1,5 +1,4 @@
 *.md
-*.yml
 *.lock
 *.svg
 
@@ -7,7 +6,6 @@ storage
 vendor
 node_modules
 
-.stylelintrc
 .platform
 server.php
 bootstrap/*

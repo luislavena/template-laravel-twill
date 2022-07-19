@@ -3,11 +3,13 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
+        "lint:js": "sh tools/linters.sh eslint",
         "precommit": "lint-staged"
     },
     "lint-staged": {
         "package.json": "sort-package-json",
         "**/*": "sh tools/linters.sh conflict-markers",
+        "**/*.{js,jsx,ts,tsx,vue}": "sh tools/linters.sh eslint",
         "**/*.{js,jsx,ts,tsx,html,css,php,vue}": "sh tools/linters.sh prettify",
         "**/*.blade.php": "sh tools/linters.sh blast",
         "**/*.php": "sh tools/linters.sh phpstan"

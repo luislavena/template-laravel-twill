@@ -17,9 +17,9 @@ braceStyle: psr-2
 overrides:
     - files: "*.js"
       options:
-        singleQuote: true
-        semi: false
-        trailingComma: none
+          singleQuote: true
+          semi: false
+          trailingComma: none
     - files: "*.yml"
       options:
           singleQuote: false

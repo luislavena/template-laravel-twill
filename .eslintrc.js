@@ -5,7 +5,6 @@ module.exports = {
     },
     extends: ['eslint:recommended', 'prettier'],
     plugins: ['unused-imports', 'simple-import-sort'],
-
     rules: {
         'no-unused-vars': 'off',
         'unused-imports/no-unused-imports': 'error',
