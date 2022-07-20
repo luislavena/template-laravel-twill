@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Front\Pages;
-use App\Http\Front\Homepage;
+use App\Http\Controllers\Front\Pages;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front\Homepage;
 
 Route::get('/', [Homepage::class, 'redirectToLocalizedHomepage'])->name('homepage.redirect');
 
