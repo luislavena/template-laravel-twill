@@ -19,13 +19,12 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
-                background: #ffffff;
             }
         </style>
     </head>
 
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-white sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center py-4 sm:pt-0">
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 @yield('body')
             </div>
