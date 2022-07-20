@@ -5,6 +5,9 @@ import eslintPlugin from 'vite-plugin-eslint'
 export default defineConfig({
     plugins: [
         eslintPlugin(),
-        laravel(['resources/css/app.css', 'resources/js/app.js'])
+        laravel([
+            'resources/frontend/styles/app.css',
+            'resources/frontend/scripts/app.js'
+        ])
     ]
 })

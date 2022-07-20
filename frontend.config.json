@@ -1,0 +1,130 @@
+{
+    "structure": {
+        "breakpoints": {
+            "xs": "0",
+            "sm": "544px",
+            "md": "650px",
+            "lg": "990px",
+            "xl": "1300px",
+            "xxl": "1520px"
+        },
+        "columns": {
+            "xs": "4",
+            "sm": "4",
+            "md": "8",
+            "lg": "12",
+            "xl": "12",
+            "xxl": "12"
+        },
+        "container": {
+            "xs": "auto",
+            "sm": "auto",
+            "md": "auto",
+            "lg": "auto",
+            "xl": "auto",
+            "xxl": "1440px"
+        },
+        "gutters": {
+            "inner": {
+                "xs": "10px",
+                "sm": "15px",
+                "md": "20px",
+                "lg": "30px",
+                "xl": "40px",
+                "xxl": "40px"
+            },
+            "outer": {
+                "xs": "20px",
+                "sm": "30px",
+                "md": "40px",
+                "lg": "40px",
+                "xl": "40px",
+                "xxl": "0px"
+            }
+        }
+    },
+    "ratios": {
+        "1x1": "1:1",
+        "16x9": "16:9"
+    },
+    "spacing": {
+        "tokens": {
+            "scaler": 4,
+            "arbritraries": {
+                "400": "400px",
+                "600": "600px"
+            }
+        },
+        "groups": {
+        }
+    },
+    "color": {
+        "tokens": {
+            "white": "#fff",
+            "grey-3": "#f8f8f8",
+            "grey-5": "#f2f2f2",
+            "grey-10": "#e6e6e6",
+            "grey-15": "#d9d9d9",
+            "grey-54": "#757575",
+            "grey-90": "#1a1a1a",
+            "black": "#000"
+        },
+        "border": {
+            "primary": "black",
+            "secondary": "grey-15",
+            "tertiary": "grey-54"
+        },
+        "text": {
+            "title": "black",
+            "primary": "grey-90",
+            "inverse": "white",
+            "secondary": "grey-54"
+        },
+        "background": {
+            "primary": "white",
+            "header": "grey-10",
+            "footer": "grey-10",
+            "banner": "grey-90",
+            "accent": "blue-03",
+            "column": "blue-05",
+            "column-alt": "blue-04",
+            "code": "grey-10",
+            "code-example": "grey-90",
+            "quote": "grey-5"
+        },
+        "underline": {
+            "primary": "grey-54",
+            "secondary": "grey-15"
+        }
+    },
+    "typography": {
+        "families": {
+            "sans": "SuisseIntl, Helvetica, Arial, sans-serif"
+        },
+        "typesets": {
+            "body": {
+                "xs": {
+                    "font-family": "var(--sans)",
+                    "bold-weight": "500",
+                    "font-size": "14px",
+                    "line-height": "1.7",
+                    "font-smoothing": "true"
+                },
+                "md": {
+                    "font-size": "16px"
+                }
+            }
+        }
+    },
+    "components": {
+        ".show-grid": {
+            "apply": "relative",
+            "attributes": {
+                "--grid-column-bg": "rgba(0, 0, 0, 0.05)"
+            },
+            "selectors": {
+                "::after": "dev-tools-grid absolute w-full content-['']"
+            }
+        }
+    }
+}
