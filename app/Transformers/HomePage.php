@@ -13,6 +13,6 @@ class HomePage extends Transformer
 {
     public function transformData(array|null $data = null): array
     {
-        return ['pages' => $this->pages->map(fn($page) => $this->transformMoleculePage($page))];
+        return ['pages' => $this->pages?->map(fn($page) => $this->transformMoleculePage($page))];
     }
 }
