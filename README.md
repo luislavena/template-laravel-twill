@@ -73,8 +73,8 @@ We are using a series of tools to prettify and lint the code we write:
 - PHPStan: to do static analysis check on PHP code
 - PHP-CS-Fixer: to remove unused dependencies and do some basic formatting
 - Prettier: to fully format the code
+- Eslint: to find and fix problems in JavaScript files
 - Blast: if installed, we run it to test if it's compilable
-- Eslint: TODO: not done yet, we need a FEE to help doing this the right way
 - Git conflict markers: the pre-commit checker tool also checks if the developer didn't stage any Git conflicted files by looking for conflict markers on the staged files.
  
 These tools are executed automatically on every commit, only on staged files (except for Blast), and for it to work you need to make sure you executed. Composer and NPM are responsible for making sure husky is installed. And these commands are also available if a developer needs to run the commands manually:
@@ -87,7 +87,7 @@ Global commands:
 Specific commands:
 
 - composer phpstan
-- composer eslint (TODO)
+- composer eslint
 - composer prettier
 - composer blast
 - composer php-cs-fixer
