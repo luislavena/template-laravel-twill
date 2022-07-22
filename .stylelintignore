@@ -2,3 +2,4 @@ vendor/**/*
 node_modules/**/*
 storage/**/*
 public/build/**/*
+public/assets/admin/**/*

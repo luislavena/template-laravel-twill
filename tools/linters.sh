@@ -22,6 +22,10 @@ main() {
         eslint
     fi
 
+    if [ "$SERVICE" = "all" ] || [ "$SERVICE" = "stylelint" ]; then
+        stylelint
+    fi
+
     if [ "$SERVICE" = "all" ] || [ "$SERVICE" = "prettify" ] || [ "$SERVICE" = "format" ]; then
         phpCsFixer
         prettier
@@ -56,11 +60,15 @@ init() {
     fi
 
     if [ -z ${PRETTIER+x} ]; then
-        PRETTIER="node_modules/prettier/bin-prettier.js"
+        PRETTIER="node_modules/.bin/prettier"
     fi
 
     if [ -z ${ESLINT+x} ]; then
         ESLINT="node_modules/.bin/eslint"
+    fi
+
+    if [ -z ${STYLELINT+x} ]; then
+        STYLELINT="node_modules/.bin/stylelint"
     fi
 
     if [ -z ${PHPSTAN+x} ]; then
@@ -105,6 +113,26 @@ eslint() {
         for FILE in $FILES; do
             if ! $ESLINT --no-eslintrc -c .eslintrc.js --fix --ext .jsx,.js,.tsx,.ts,.vue "$FILE"; then
                 fatalError "Eslint finished with errors"
+            fi
+        done
+    fi
+
+    WAS_EXECUTED="$ESLINT"
+}
+
+stylelint() {
+    message "Running Stylelint..."
+
+    checkExecutable "Stylelint" $STYLELINT
+
+    if [ "$FILES" = "." ]; then
+        if ! $STYLELINT "**/*.{css,scss,sass}" ; then
+            fatalError "Stylelint finished with errors"
+        fi
+    else
+        for FILE in $FILES; do
+            if ! $STYLELINT "$FILE"; then
+                fatalError "Stylelint finished with errors"
             fi
         done
     fi

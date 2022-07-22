@@ -4,6 +4,7 @@
         "build": "vite build",
         "dev": "vite",
         "lint:js": "sh tools/linters.sh eslint",
+        "lint:styles": "sh tools/linters.sh stylelint",
         "precommit": "lint-staged"
     },
     "lint-staged": {
@@ -21,6 +22,7 @@
     },
     "devDependencies": {
         "@prettier/plugin-php": "0.18.9",
+        "@shufo/prettier-plugin-blade": "1.4.19",
         "autoprefixer": "10.4.7",
         "eslint": "8.20.0",
         "eslint-config-prettier": "8.5.0",
@@ -31,9 +33,13 @@
         "lint-staged": "13.0.3",
         "postcss": "8.4.14",
         "prettier": "2.7.1",
+        "prettier-plugin-tailwindcss": "0.1.12",
         "sort-package-json": "1.57.0",
+        "stylelint": "14.9.1",
+        "stylelint-config-prettier": "9.0.3",
+        "stylelint-config-standard": "26.0.0",
         "vite": "3.0.2",
-        "vite-plugin-eslint": "^1.7.0"
+        "vite-plugin-eslint": "1.7.0"
     },
     "engines": {
         "node": "~16",
