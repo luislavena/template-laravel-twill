@@ -23,5 +23,8 @@ module.exports = {
     parserOptions: {
         sourceType: 'module',
         ecmaVersion: 2022
+    },
+    globals: {
+        A17: true
     }
 }
