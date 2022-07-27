@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Locales
@@ -10,9 +9,7 @@ return [
     | Contains an array with the applications available locales.
     |
      */
-    'locales' => [
-        'en',
-    ],
+    'locales' => ['en', 'fr'],
 
     /*
     |--------------------------------------------------------------------------
