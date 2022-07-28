@@ -5,6 +5,7 @@
 storage
 vendor
 node_modules
+public
 
 .platform
 server.php
