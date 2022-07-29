@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <title>Laravel Twill Template</title>
 
-    <x-partials::head-assets/>
+    <x-partials::head-seo :title="'Laravel Twill template'" :description="'Pre-configured template to start new Laravel project'" />
+    <x-partials::head-assets />
 </head>
     <body class="antialiased">
         @section('header')
