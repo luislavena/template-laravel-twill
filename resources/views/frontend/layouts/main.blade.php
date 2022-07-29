@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,17 +9,20 @@
     <x-partials::head-seo :title="'Laravel Twill template'" :description="'Pre-configured template to start new Laravel project'" />
     <x-partials::head-assets />
 </head>
-    <body class="antialiased">
-        @section('header')
-            <x-partials::header/>
-        @show
 
-        <main>
-            @yield('body')
-        </main>
+<body class="{{ $body_classes ?? '' }} antialiased">
+    @section('header')
+        <x-partials::header />
+    @show
 
-        @section('footer')
-            <x-partials::footer/>
-        @show
-    </body>
+    <main class="{{ $main_classes ?? '' }}">
+        @yield('body')
+    </main>
+
+    @section('footer')
+        <x-partials::footer />
+    @show
+
+</body>
+
 </html>

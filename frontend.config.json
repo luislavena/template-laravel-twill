@@ -99,19 +99,43 @@
     },
     "typography": {
         "families": {
-            "sans": "SuisseIntl, Helvetica, Arial, sans-serif"
+            "sans": "Helvetica, Arial, sans-serif"
         },
         "typesets": {
-            "body": {
+            "title": {
                 "xs": {
                     "font-family": "var(--sans)",
                     "bold-weight": "500",
+                    "font-size": "20px",
+                    "line-height": "1.8",
+                    "font-smoothing": "true"
+                },
+                "md": {
+                    "font-size": "24px",
+                    "line-height": "1.9"
+                },
+                "lg": {
+                    "font-size": "32px",
+                    "line-height": "2"
+                }
+            },
+            "body": {
+                "xs": {
+                    "font-family": "var(--sans)",
                     "font-size": "14px",
                     "line-height": "1.7",
                     "font-smoothing": "true"
                 },
                 "md": {
                     "font-size": "16px"
+                }
+            },
+            "caption": {
+                "xs": {
+                    "font-family": "var(--sans)",
+                    "font-size": "13px",
+                    "line-height": "1.3",
+                    "font-smoothing": "true"
                 }
             }
         }
