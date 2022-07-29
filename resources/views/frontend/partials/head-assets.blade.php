@@ -1,4 +1,4 @@
-<link rel="author" href="{{ asset('humans.txt') }}" />
+<link rel="author" href="{{ url('humans.txt') }}" />
 
 <!-- Fonts -->
 
@@ -9,5 +9,3 @@
 <!-- Scripts -->
 @stack('scripts')
 @vite('resources/frontend/scripts/app.js')
-
-
