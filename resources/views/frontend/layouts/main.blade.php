@@ -23,6 +23,9 @@
         <x-partials::footer />
     @show
 
+    @env('local')
+    <x-components::helpers.grid />
+    @endenv
 </body>
 
 </html>
