@@ -50,6 +50,9 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
+        "eslint": [
+            "sh tools/linters.sh eslint"
+        ],
         "lint": [
             "sh tools/linters.sh lint"
         ],

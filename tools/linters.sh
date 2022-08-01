@@ -2,8 +2,7 @@
 
 . "$(dirname -- "$0")/../tools/helpers.sh"
 
-main()
-{
+main() {
     if [ "$1" = "" ]; then
         fatalError "Expected command parameter not provided"
     fi
@@ -17,6 +16,14 @@ main()
 
     if [ "$SERVICE" = "all" ] || [ "$SERVICE" = "conflict-markers" ]; then
         checkLeftConflictMarkers
+    fi
+
+    if [ "$SERVICE" = "all" ] || [ "$SERVICE" = "eslint" ]; then
+        eslint
+    fi
+
+    if [ "$SERVICE" = "all" ] || [ "$SERVICE" = "stylelint" ]; then
+        stylelint
     fi
 
     if [ "$SERVICE" = "all" ] || [ "$SERVICE" = "prettify" ] || [ "$SERVICE" = "format" ]; then
@@ -39,8 +46,7 @@ main()
     checkStatus "$@"
 }
 
-init()
-{
+init() {
     SERVICE=$1
 
     LOGS_PATH="$(dirname -- "$0")/../tools/logs"
@@ -54,7 +60,15 @@ init()
     fi
 
     if [ -z ${PRETTIER+x} ]; then
-        PRETTIER="node_modules/prettier/bin-prettier.js"
+        PRETTIER="node_modules/.bin/prettier"
+    fi
+
+    if [ -z ${ESLINT+x} ]; then
+        ESLINT="node_modules/.bin/eslint"
+    fi
+
+    if [ -z ${STYLELINT+x} ]; then
+        STYLELINT="node_modules/.bin/stylelint"
     fi
 
     if [ -z ${PHPSTAN+x} ]; then
@@ -66,8 +80,7 @@ init()
     fi
 }
 
-phpCsFixer()
-{
+phpCsFixer() {
     message "Running PHP-CS-Fixer..."
 
     checkExecutable "PHP CS Fixer" $PHPCSFIXER
@@ -87,8 +100,47 @@ phpCsFixer()
     WAS_EXECUTED="$PHPCSFIXER"
 }
 
-prettier()
-{
+eslint() {
+    message "Running Eslint..."
+
+    checkExecutable "Eslint" $ESLINT
+
+    if [ "$FILES" = "." ]; then
+        if ! $ESLINT --no-eslintrc -c .eslintrc.js --fix --ext .jsx,.js,.tsx,.ts,.vue .; then
+            fatalError "Eslint finished with errors"
+        fi
+    else
+        for FILE in $FILES; do
+            if ! $ESLINT --no-eslintrc -c .eslintrc.js --fix --ext .jsx,.js,.tsx,.ts,.vue "$FILE"; then
+                fatalError "Eslint finished with errors"
+            fi
+        done
+    fi
+
+    WAS_EXECUTED="$ESLINT"
+}
+
+stylelint() {
+    message "Running Stylelint..."
+
+    checkExecutable "Stylelint" $STYLELINT
+
+    if [ "$FILES" = "." ]; then
+        if ! $STYLELINT "**/*.{css,scss,sass}" ; then
+            fatalError "Stylelint finished with errors"
+        fi
+    else
+        for FILE in $FILES; do
+            if ! $STYLELINT "$FILE"; then
+                fatalError "Stylelint finished with errors"
+            fi
+        done
+    fi
+
+    WAS_EXECUTED="$ESLINT"
+}
+
+prettier() {
     message "Running Prettier..."
 
     checkExecutable "Prettier" $PRETTIER
@@ -105,11 +157,10 @@ prettier()
         done
     fi
 
-    WAS_EXECUTED="$PHPCSFIXER"
+    WAS_EXECUTED="$PRETTIER"
 }
 
-phpStan()
-{
+phpStan() {
     message "Running PHPStan..."
 
     checkExecutable "PHPStan" $PHPSTAN
@@ -118,7 +169,7 @@ phpStan()
     PATHS_FILE="$TEMP_PATH/phpstan.files.txt"
 
     if [ "$FILES" = "." ]; then
-        if ! $PHPSTAN analyse >> $LOGFILE; then
+        if ! $PHPSTAN analyse >>$LOGFILE; then
             fatalError "PHPStan finished with errors"
         fi
     else
@@ -129,11 +180,10 @@ phpStan()
         fi
     fi
 
-    WAS_EXECUTED="$PHPCSFIXER"
+    WAS_EXECUTED="$PHPSTAN"
 }
 
-blast()
-{
+blast() {
     message "Running Blast..."
 
     if ! php artisan | grep blast:publish; then
@@ -147,8 +197,7 @@ blast()
     WAS_EXECUTED="$BLAST"
 }
 
-checkExecutable()
-{
+checkExecutable() {
     if [ ! -f "$2" ]; then
         echo
         echo "The executable for $1 ($1) wa not found."
@@ -158,15 +207,13 @@ checkExecutable()
     fi
 }
 
-checkStatus()
-{
+checkStatus() {
     if [ -z ${WAS_EXECUTED+x} ]; then
         fatalError "No commands were found for '$1'"
     fi
 }
 
-checkLeftConflictMarkers()
-{
+checkLeftConflictMarkers() {
     CONFLICT_MARKERS='<<<<<<<|=======|>>>>>>>'
 
     if [ "$FILES" = "." ]; then
@@ -189,8 +236,7 @@ checkLeftConflictMarkers()
     WAS_EXECUTED="conflict-markers-checker"
 }
 
-buildArguments()
-{
+buildArguments() {
     FILES=""
 
     COMMANDS=""

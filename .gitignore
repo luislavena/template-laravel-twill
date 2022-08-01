@@ -1,23 +1,34 @@
+# IDE Specific files
+/.idea
+/.vscode
+
+# Dependencies
 /node_modules
+/vendor
+
+# Log files
+npm-debug.log
+yarn-error.log
+
+# Laravel specific
+.env
+.env.backup
+
+docker-compose.override.yml
+
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+
 /public/hot
 /public/storage
 /public/build
-/storage/*.key
-/vendor
-.env
-.env.backup
-.phpunit.result.cache
-docker-compose.override.yml
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/.idea
-/.vscode
 /public/css
 /public/js
 /public/mix-manifest.json
 /public/assets/admin
+
+/storage/*.key
 
 # PHP-CS-Fixer
 .php-cs-fixer.cache

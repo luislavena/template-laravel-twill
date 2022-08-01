@@ -5,20 +5,40 @@ useTabs: false
 requirePragma: false
 insertPragma: false
 
-### VueJS
+plugins:
+  - "prettier-plugin-tailwindcss"
+
+  ### VueJS
 vueIndentScriptAndStyle: true
 
 ### PHP
 phpVersion: "8.0"
 trailingCommaPHP: true
 braceStyle: psr-2
+sortTailwindcssClasses: true
 
 ### Pattern-specific
 overrides:
-    - files: "*.yml"
-      options:
-          singleQuote: false
-    - files: "*.php"
-      options:
-          singleQuote: true
-          printWidth: 120
+  - files:
+      - "*.js"
+      - "*.ts"
+      - "*.jsx"
+      - "*.tsx"
+      - "*.vue"
+    options:
+      singleQuote: true
+      semi: false
+      trailingComma: none
+  - files:
+      - "*.yml"
+      - "*.yaml"
+    options:
+      tabWidth: 2
+      singleQuote: false
+  - files: "*.php"
+    options:
+      singleQuote: true
+      printWidth: 120
+  - files: "*.blade.php"
+    options:
+      parser: "blade"
