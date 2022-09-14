@@ -126,3 +126,8 @@ Linter commands have available aliases and can be run through Composer or NPM. F
 ### Editors
 We highly recommend you to configure your editor to take in account
 current linters configurations files.
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
